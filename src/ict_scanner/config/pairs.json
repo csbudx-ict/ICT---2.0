@@ -1,0 +1,37 @@
+[
+  {
+    "symbol": "EUR/USD",
+    "asset_class": "forex",
+    "is_active": true,
+    "timeframes": "1D,4H,15M,5M",
+    "provider": "twelvedata"
+  },
+  {
+    "symbol": "GBP/USD",
+    "asset_class": "forex",
+    "is_active": true,
+    "timeframes": "1D,4H,15M,5M",
+    "provider": "twelvedata"
+  },
+  {
+    "symbol": "BTC/USDT",
+    "asset_class": "crypto",
+    "is_active": true,
+    "timeframes": "1D,4H,15M,5M",
+    "provider": "ccxt"
+  },
+  {
+    "symbol": "ETH/USDT",
+    "asset_class": "crypto",
+    "is_active": true,
+    "timeframes": "1D,4H,15M,5M",
+    "provider": "ccxt"
+  },
+  {
+    "symbol": "NAS100",
+    "asset_class": "index",
+    "is_active": true,
+    "timeframes": "1D,4H,15M,5M",
+    "provider": "twelvedata"
+  }
+]

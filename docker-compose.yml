@@ -1,0 +1,11 @@
+services:
+  ict-scanner:
+    build: .
+    container_name: ict_scanner_v2
+    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

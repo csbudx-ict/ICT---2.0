@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ict-scanner"
+version = "0.1.0"
+description = "24/7 Live ICT Scanner and Chart-Annotating AI Analyst"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.22.0",
+    "sqlalchemy>=2.0.0",
+    "aiosqlite>=0.19.0",
+    "alembic>=1.11.0",
+    "pydantic-settings>=2.0.0",
+    "ccxt>=4.0.0",
+    "pandas>=2.0.0",
+    "mplfinance>=0.12.0",
+    "matplotlib>=3.7.0",
+    "python-telegram-bot>=20.0",
+    "google-genai>=0.5.0",
+    "structlog>=23.1.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.3.0"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+include = ["src/**/*.py", "tests/unit/**/*.py", "tests/integration/**/*.py"]
+exclude = ["core/", "api/", "db/", "notifications/", "tests/test_*.py"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+exclude = ["core", "api", "db", "notifications"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests/unit", "tests/integration"]
+pythonpath = ["src"]

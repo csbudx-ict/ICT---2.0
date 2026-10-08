@@ -1,0 +1,12 @@
+pairs:
+  - {symbol: "EUR/USD", asset_class: forex,  provider: twelvedata, active: true}
+  - {symbol: "GBP/USD", asset_class: forex,  provider: twelvedata, active: true}
+  - {symbol: "USD/JPY", asset_class: forex,  provider: twelvedata, active: true}
+  - {symbol: "AUD/USD", asset_class: forex,  provider: twelvedata, active: true}
+  - {symbol: "GBP/JPY", asset_class: forex,  provider: twelvedata, active: true}
+  - {symbol: "XAU/USD", asset_class: forex,  provider: twelvedata, active: true}
+  - {symbol: "NAS100",  asset_class: index,  provider: twelvedata, active: true}
+  - {symbol: "US30",    asset_class: index,  provider: twelvedata, active: true}
+  - {symbol: "BTC/USDT",asset_class: crypto, provider: ccxt, active: true}
+  - {symbol: "ETH/USDT",asset_class: crypto, provider: ccxt, active: true}
+  - {symbol: "SOL/USDT",asset_class: crypto, provider: ccxt, active: true}

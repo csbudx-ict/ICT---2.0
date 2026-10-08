@@ -1,0 +1,57 @@
+# 24/7 ICT Scanner & AI Analyst
+
+An automated, headless algorithmic trading scanner operating 24/7 on a cloud VPS across selected Forex, Crypto, and Index pairs. 
+
+This system uses pure ICT algorithmic concepts (Liquidity Sweeps, Market Structure Shifts, Fair Value Gaps, Order Blocks, and Session Killzones). All detected setups are evaluated by an AI Agent (OpenAI/Anthropic) to verify confluence and assign a probability score before firing alerts to Telegram and Email.
+
+**Disclaimer:** This is an alerting tool. It does NOT place trades automatically and is not financial advice.
+
+## Features
+- **Deterministic ICT Engine:** Strict multi-timeframe algorithm enforcing MSS + Displacement.
+- **AI Evaluator Layer:** Confluence scoring to filter out weak signals.
+- **Web Admin Panel:** Manage Active Pairs, Adjust Thresholds, View Logs.
+- **Alert Dispatcher:** Beautiful Telegram & Email formats.
+- **Dockerized for VPS:** Ready to run indefinitely.
+
+## Deployment Instructions (Ubuntu VPS)
+
+1. **Install Dependencies:**
+   ```bash
+   sudo apt update && sudo apt install -y git docker.io docker-compose-v2
+   ```
+
+2. **Clone Repository & Enter Directory:**
+   ```bash
+   git clone <your-repo-url> ict-trading-bot
+   cd ict-trading-bot
+   ```
+
+3. **Configure Environment Variables:**
+   ```bash
+   cp .env.example .env
+   nano .env
+   ```
+   *Make sure to configure your `ADMIN_API_KEY`! You'll need this to login to the Dashboard.*
+
+4. **Start the Bot (Background):**
+   ```bash
+   sudo docker compose up -d --build
+   ```
+
+5. **Access the Dashboard:**
+   Open your browser to `http://<your-vps-ip>:8000` and login with your `ADMIN_API_KEY`.
+
+6. **View Logs:**
+   ```bash
+   sudo docker compose logs -f
+   ```
+
+## Development
+Run the server locally without Docker:
+```bash
+python -m uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
+Run tests:
+```bash
+python -m pytest tests/
+```
