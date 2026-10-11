@@ -40,15 +40,18 @@ Before creating your Botkeep service, have the following ready:
 3. Set the **Deployment Method** to **Dockerfile**.
 4. Botkeep will automatically detect the root [`Dockerfile`](file:///Dockerfile), run the multi-stage build (compiling Next.js and packaging Python 3.11 with Node.js), and start [`start.sh`](file:///start.sh).
 
-### Option B: Custom Startup Command
-If you are deploying using a native Python/Node template:
-1. Set the **Build Command**:
+### Option B: Custom Startup Command / Node.js Template
+If you are deploying using Botkeep's Node.js or Python runtime template:
+1. In the **Start Command** input box:
+   - **Delete** any default command (such as `node index.js` or `npm start`).
+   - **Replace** it with:
+     ```text
+     ./start.sh
+     ```
+   *(or `bash ./start.sh` / `chmod +x ./start.sh && ./start.sh`)*
+2. In the **Build Command** input box (if using pre-start build):
    ```bash
    pip install -e . && cd ict-scanner-dashboard && npm install --legacy-peer-deps && npm run build && cd ..
-   ```
-2. Set the **Start Command**:
-   ```bash
-   chmod +x ./start.sh && ./start.sh
    ```
 
 ---
