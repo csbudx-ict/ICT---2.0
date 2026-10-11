@@ -3,9 +3,20 @@ services:
     build: .
     container_name: ict_scanner_v2
     restart: always
+    ports:
+      - "8000:8000"
+      - "3000:3000"
     environment:
       - PYTHONUNBUFFERED=1
+      - HOST=0.0.0.0
+      - BACKEND_PORT=8000
+      - FRONTEND_PORT=3000
     env_file:
       - .env
     volumes:
       - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

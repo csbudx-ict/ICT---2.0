@@ -6,7 +6,7 @@ Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Requires-Dist: fastapi>=0.100.0
 Requires-Dist: uvicorn>=0.22.0
-Requires-Dist: sqlalchemy>=2.0.0
+Requires-Dist: sqlalchemy[asyncio]>=2.0.0
 Requires-Dist: aiosqlite>=0.19.0
 Requires-Dist: alembic>=1.11.0
 Requires-Dist: pydantic-settings>=2.0.0
@@ -15,7 +15,7 @@ Requires-Dist: pandas>=2.0.0
 Requires-Dist: mplfinance>=0.12.0
 Requires-Dist: matplotlib>=3.7.0
 Requires-Dist: python-telegram-bot>=20.0
-Requires-Dist: google-generativeai>=0.8.0
+Requires-Dist: google-genai>=0.5.0
 Requires-Dist: structlog>=23.1.0
 Provides-Extra: dev
 Requires-Dist: pytest>=7.0.0; extra == "dev"
@@ -82,3 +82,23 @@ Run tests:
 ```bash
 python -m pytest tests/
 ```
+
+### EUR/USD WebSocket demo
+
+For the accelerated synthetic-candle demo, start its standalone API from the repository root:
+
+```bash
+python -m uvicorn ict_scanner.api.demo:app --reload --host 127.0.0.1 --port 8000
+```
+
+In a second terminal, start the Next.js dashboard:
+
+```bash
+cd ict-scanner-dashboard
+npm run dev
+```
+
+Open `http://localhost:3000/live-demo`. The endpoint streams one closed synthetic candle per
+second and reports a basic three-candle FVG when detected. It does not use a live forex feed and
+must not be used to make trading decisions. Set `NEXT_PUBLIC_API_WS_URL` before starting Next.js
+only if the API is listening at a different WebSocket URL.
